@@ -19,7 +19,7 @@
   h1 {
     font-family: "Crimson Text", serif;
     font-size: 4em;
-    color: #000000;
+    color: #ffffff;
     background-clip: text;
     text-align: center;
     margin: 2rem 0 1rem;

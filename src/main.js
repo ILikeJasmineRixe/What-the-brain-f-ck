@@ -7,16 +7,69 @@ const app = new App({
 	}
 });
 
+function initializeBracketMap(brainFuck) {
+	const bracketMap = new Map();
+	const stack = [];
+
+	for (let i = 0 ; brainFuck.length; i++) {
+		if (brainFuck[i] === '[') {
+			stack.push(1);
+		} else if (brainFuck[i] === ']') {
+			const leftIndex = stack.pop();
+			if (leftIndex === undefined) {
+				throw new Error(`] at ${i} doesn\'t match`)
+			}
+			bracketMap.set(leftIndex, i);
+			bracketMap.set(i, leftIndex);
+		}
+	}
+}
+
 function interpret(brainFuck) {
-	const memory = new Array(30000).fill(0);
+	const memoryCells = new Array(30000).fill(0);
+	let inputIndex = 0;
 	let pointer = 0;
 	let output = '';
-	let inputIndex = 0;
 
 	for (let i = 0; i < brainFuck.length; i++) {
 		const currentCommand = brainFuck[i];
 
-		// add a switch statement for actual brainFuck ops.
+		switch (currentCommand) {
+			case '>':
+				pointer++;
+				break;
+			case '<':
+				pointer--;
+				break;
+			case '+':
+				memoryCells[pointer]++;
+				break;
+			case '-':
+				memoryCells[pointer]--;
+				break;
+			case '.':
+				// Do Later
+				break;
+			case ',':
+				// Do Later
+				// Add Function for User Input sent through frontend
+				break;
+			case '[':
+				if (memoryCells[pointer] === 0) {
+					i = initializeBracketMap(brainFuck).get(i);
+				}
+				break;
+			case ']':
+				if (memoryCells[pointer] !== 0) {
+					i = initializeBracketMap(brainFuck).get(i);
+				}
+				break;
+
+
+
+			default:
+				break;
+		}
 	}
 }
 
