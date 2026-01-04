@@ -17,12 +17,19 @@ function initializeBracketMap(brainFuck) {
 		} else if (brainFuck[i] === ']') {
 			const leftIndex = stack.pop();
 			if (leftIndex === undefined) {
-				throw new Error(`] at ${i} doesn\'t match`)
+				throw new Error(`']' at ${i} does not match`)
 			}
 			bracketMap.set(leftIndex, i);
 			bracketMap.set(i, leftIndex);
 		}
 	}
+
+	if (stack.length > 0) {
+		throw new Error(`'[' at ${stack.pop()} does not match`);
+	}
+
+	// almost forgot this lol
+	return Map;
 }
 
 function interpret(brainFuck) {
@@ -49,6 +56,8 @@ function interpret(brainFuck) {
 				break;
 			case '.':
 				// Do Later
+				// String.fromCharCode
+				output += String.fromCharCode(memoryCells[pointer]);
 				break;
 			case ',':
 				// Do Later
@@ -71,6 +80,8 @@ function interpret(brainFuck) {
 				break;
 		}
 	}
+
+	return output;
 }
 
 export default app;
