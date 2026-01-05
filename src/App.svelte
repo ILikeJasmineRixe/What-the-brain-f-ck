@@ -1,8 +1,20 @@
 <script>
+  import { interpret } from './lib/brainfuck.js';
+
+  let code = '>++++++++[<++++>-]>++++++++++[<++++++>-]<++++++.[-]>++++++++++[<++++++++++>-]<+.--.--.++++++++++++++++++++.--.--------------.<.>++++.+++++++++++.<+++++++.------->-.<.>-------------.+++++++++++++++.-------..+++++++++++.<++++++++++++++.';
+  let output = '';
+  function runBf() {
+    output = interpret(code.replace(/\s/g, ''));
+    // The interpreter should be skipping white space but apparently its not and breaks instead it changes the string upon reading it... so i just put a replace here.
+    console.log(output);
+
+  }
+
   export let heading;
 </script>
 
 <main>
+  <button on:click={runBf}>Run</button>
   <h1>{heading}</h1>
 </main>
 
