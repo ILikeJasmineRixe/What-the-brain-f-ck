@@ -51,9 +51,9 @@ export function interpret(brainFuck) {
 			case ',':
 				/*	TODO:
 					Still not sure 100% on implementing this but so far heres my idea:
-					1. Add some form of state machine that consistently running and wiaiting on user input dybamcially and accoridng to when the code requests it.
-					2. As usual, upon a "," input, we just convert the ascii char to Decimal (charCodeAt()) and save to pointer location (and icnrement inputIndex)
-					3. When the interpreter here reuqests input and sends to the state machine, state machine tells frontend to render a dynamic UI input interface form input wtv the (brain) fuck
+					1. Add some form of state machine that consistently running and waiting on user input dynamically and according to when the code requests it.
+					2. As usual, upon a "," input, we just convert the ascii char to Decimal (charCodeAt()) and save to pointer location (and increment inputIndex)
+					3. When the interpreter here requests input and sends to the state machine, state machine tells frontend to render a dynamic UI input interface form input wtv the (brain) fuck
 					   and then when the user submits, just append said string to the input buffer.
 				*/
 				break;

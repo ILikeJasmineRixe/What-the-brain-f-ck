@@ -14,8 +14,8 @@
 </script>
 
 <main>
-  <button on:click={runBf}>Run</button>
   <h1>{heading}</h1>
+  <button on:click={runBf}>Run</button>
 </main>
 
 <style>
